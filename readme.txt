@@ -12,7 +12,8 @@ Stable tag: 1.1.0
 
 == Description ==
 
-"Login Logout" plugin add widget with login or logout link which you can add to your sidebar.
+"Login Logout" plugin add widget with login or logout link.
+
 = If user is not logged in there are two links: =
 * login (after login action user will return to previous page);
 * register (if user can register) (if checkbox is active);
