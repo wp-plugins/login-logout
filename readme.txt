@@ -1,6 +1,5 @@
 === Login Logout ===
 Contributors: webvitaly
-Donate link: http://web-profile.com.ua/wordpress/plugins/login-logout/
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/login-logout/
 Tags: login, logout, widget, meta
 Author URI: http://web-profile.com.ua/wordpress/
