@@ -26,7 +26,6 @@ Stable tag: 1.1.0
 
 [WordPress stuff](http://web-profile.com.ua/wordpress/)
 
-
 == Changelog ==
 
 = 1.1.0 =
