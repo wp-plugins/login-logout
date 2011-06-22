@@ -5,13 +5,13 @@ Tags: login, logout, widget, meta
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
 Tested up to: 3.2
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 
 "Login Logout" plugin add widget with login or logout link.
 
 == Description ==
 
-"Login Logout" plugin add widget with login or logout link.
+"Login Logout" plugin add widget with login or logout link. Also can be shown register and admin link.
 
 = If user is not logged in there are two links: =
 * login (after login action user will return to previous page);
@@ -27,6 +27,9 @@ Stable tag: 1.1.0
 
 == Changelog ==
 
+= 1.2.0 =
+* Split register and admin links;
+
 = 1.1.0 =
 * Added show or hide register or site-admin link;
 
@@ -36,4 +39,4 @@ Stable tag: 1.1.0
 == Installation ==
 
 1. Install plugin and activate it on the Plugins page;
-2. Add "Login Logout" widget to your sidebar;
+2. Add "Login Logout" widget to your sidebar and customize it;
