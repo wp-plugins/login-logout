@@ -3,7 +3,7 @@
 Plugin Name: Login Logout
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/login-logout/
 Description: Show login or logout link. Show register or site-admin link.
-Version: 1.2.0
+Version: 1.3.0
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/
@@ -24,33 +24,35 @@ class WP_Widget_Login_Logout extends WP_Widget {
 		extract($args);
 		$register_link = $instance['register_link'] ? '1' : '0';
 		$admin_link = $instance['admin_link'] ? '1' : '0';
-		$title = apply_filters('widget_title', empty($instance['title']) ? __('Login-logout') : $instance['title'], $instance, $this->id_base);
-
+		//$title = apply_filters('widget_title', empty($instance['title']) ? __('Login-logout') : $instance['title'], $instance, $this->id_base);
+		$title = apply_filters('widget_title', $instance['title']);
+		
 		echo $before_widget;
-		if ( $title )
+		if ( $title ){
 			echo $before_title . $title . $after_title;
-			$return_link = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-			//$return_link = $_SERVER['PATH_INFO'];
+		}
+		$return_link = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		//$return_link = $_SERVER['PATH_INFO'];
 ?>
-			<ul>
-				<li><?php wp_loginout( $return_link ); ?></li>
-				<?php
-				//wp_register();
-				if( $register_link ){
-					if ( ! is_user_logged_in() ) {
-						if ( get_option('users_can_register') ){
-							echo '<li>' . '<a href="' . site_url('wp-login.php?action=register', 'login') . '">' . __('Register') . '</a>' . '</li>';
-						}
-					}
-					
-				}
-				if( $admin_link ){
-					if ( is_user_logged_in() ) {
-						echo '<li>' . '<a href="' . admin_url() . '">' . __('Site Admin') . '</a>' . '</li>';
+		<ul>
+			<li><?php wp_loginout( $return_link ); ?></li>
+			<?php
+			//wp_register();
+			if( $register_link ){
+				if ( ! is_user_logged_in() ) {
+					if ( get_option('users_can_register') ){
+						echo '<li>' . '<a href="' . site_url('wp-login.php?action=register', 'login') . '">' . __('Register') . '</a>' . '</li>';
 					}
 				}
-				?>
-			</ul>
+				
+			}
+			if( $admin_link ){
+				if ( is_user_logged_in() ) {
+					echo '<li>' . '<a href="' . admin_url() . '">' . __('Site Admin') . '</a>' . '</li>';
+				}
+			}
+			?>
+		</ul>
 <?php
 		echo $after_widget;
 	}
