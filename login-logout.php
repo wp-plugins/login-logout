@@ -3,7 +3,7 @@
 Plugin Name: Login Logout
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/login-logout/
 Description: Show login or logout link. Show register or site-admin link.
-Version: 1.4.0
+Version: 1.5.0
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/
@@ -26,16 +26,20 @@ class WP_Widget_Login_Logout extends WP_Widget {
 		$admin_link = $instance['admin_link'] ? '1' : '0';
 		//$title = apply_filters('widget_title', empty($instance['title']) ? __('Login-logout') : $instance['title'], $instance, $this->id_base);
 		$title = apply_filters('widget_title', $instance['title']);
+		$redirect_to = $instance['redirect_to'];
 		
 		echo $before_widget;
 		if ( $title ){
 			echo $before_title . $title . $after_title;
 		}
-		$return_link = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-		//$return_link = $_SERVER['PATH_INFO'];
+		$redirect_to_self = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		//$redirect_to = $_SERVER['PATH_INFO'];
+		if( empty( $redirect_to ) ){
+			$redirect_to = $redirect_to_self;
+		}
 ?>
 		<ul>
-			<li><?php wp_loginout( $return_link ); ?></li>
+			<li><?php wp_loginout( $redirect_to ); ?></li>
 			<?php
 			//wp_register();
 			if( $register_link ){
@@ -44,7 +48,6 @@ class WP_Widget_Login_Logout extends WP_Widget {
 						echo '<li>' . '<a href="' . site_url('wp-login.php?action=register', 'login') . '">' . __('Register') . '</a>' . '</li>';
 					}
 				}
-				
 			}
 			if( $admin_link ){
 				if ( is_user_logged_in() ) {
@@ -59,10 +62,11 @@ class WP_Widget_Login_Logout extends WP_Widget {
 
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
-		$new_instance = wp_parse_args( (array) $new_instance, array( 'title' => '', 'register_link' => 0, 'admin_link' => 0) );
+		$new_instance = wp_parse_args( (array) $new_instance, array( 'title' => '', 'register_link' => 0, 'admin_link' => 0, 'redirect_to' => '') );
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['register_link'] = $new_instance['register_link'] ? 1 : 0;
 		$instance['admin_link'] = $new_instance['admin_link'] ? 1 : 0;
+		$instance['redirect_to'] = strip_tags($new_instance['redirect_to']);
 		return $instance;
 	}
 
@@ -71,6 +75,7 @@ class WP_Widget_Login_Logout extends WP_Widget {
 		$title = strip_tags($instance['title']);
 		$register_link = $instance['register_link'] ? 'checked="checked"' : '';
 		$admin_link = $instance['admin_link'] ? 'checked="checked"' : '';
+		$redirect_to = strip_tags($instance['redirect_to']);
 		
 ?>
 			<p>
@@ -81,6 +86,9 @@ class WP_Widget_Login_Logout extends WP_Widget {
 			</p>
 			<p>
 				<input class="checkbox" type="checkbox" <?php echo $admin_link; ?> id="<?php echo $this->get_field_id('admin_link'); ?>" name="<?php echo $this->get_field_name('admin_link'); ?>" /> <label for="<?php echo $this->get_field_id('admin_link'); ?>"><?php _e('Show admin link (if user is logged in)'); ?>;</label>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id('redirect_to'); ?>"><?php _e('Redirect to this page after login or logout:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('redirect_to'); ?>" name="<?php echo $this->get_field_name('redirect_to'); ?>" type="text" value="<?php echo esc_attr($redirect_to); ?>" />
 			</p>
 			
 <?php
