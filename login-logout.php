@@ -3,7 +3,7 @@
 Plugin Name: Login Logout
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/login-logout/
 Description: Show login or logout link. Show register or site-admin link.
-Version: 1.5.0
+Version: 1.6.0
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/
@@ -26,7 +26,8 @@ class WP_Widget_Login_Logout extends WP_Widget {
 		$admin_link = $instance['admin_link'] ? '1' : '0';
 		//$title = apply_filters('widget_title', empty($instance['title']) ? __('Login-logout') : $instance['title'], $instance, $this->id_base);
 		$title = apply_filters('widget_title', $instance['title']);
-		$redirect_to = $instance['redirect_to'];
+		$login_redirect_to = $instance['login_redirect_to'];
+		$logout_redirect_to = $instance['logout_redirect_to'];
 		
 		echo $before_widget;
 		if ( $title ){
@@ -34,12 +35,23 @@ class WP_Widget_Login_Logout extends WP_Widget {
 		}
 		$redirect_to_self = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 		//$redirect_to = $_SERVER['PATH_INFO'];
-		if( empty( $redirect_to ) ){
-			$redirect_to = $redirect_to_self;
+		if( empty( $login_redirect_to ) ){
+			$login_redirect_to = $redirect_to_self;
 		}
+		if( empty( $logout_redirect_to ) ){
+			$logout_redirect_to = $redirect_to_self;
+		}
+		
 ?>
 		<ul>
-			<li><?php wp_loginout( $redirect_to ); ?></li>
+			<li><?php
+			//wp_loginout( $redirect_to_self );
+			if ( ! is_user_logged_in() ){
+				echo '<a href="' . esc_url( wp_login_url( $login_redirect_to ) ) . '">' . __('Log in') . '</a>';
+			}else{
+				echo '<a href="' . esc_url( wp_logout_url( $logout_redirect_to ) ) . '">' . __('Log out') . '</a>';
+			}
+			?></li>
 			<?php
 			//wp_register();
 			if( $register_link ){
@@ -62,11 +74,12 @@ class WP_Widget_Login_Logout extends WP_Widget {
 
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
-		$new_instance = wp_parse_args( (array) $new_instance, array( 'title' => '', 'register_link' => 0, 'admin_link' => 0, 'redirect_to' => '') );
+		$new_instance = wp_parse_args( (array) $new_instance, array( 'title' => '', 'register_link' => 0, 'admin_link' => 0, 'login_redirect_to' => '', 'logout_redirect_to' => '') );
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['register_link'] = $new_instance['register_link'] ? 1 : 0;
 		$instance['admin_link'] = $new_instance['admin_link'] ? 1 : 0;
-		$instance['redirect_to'] = strip_tags($new_instance['redirect_to']);
+		$instance['login_redirect_to'] = strip_tags($new_instance['login_redirect_to']);
+		$instance['logout_redirect_to'] = strip_tags($new_instance['logout_redirect_to']);
 		return $instance;
 	}
 
@@ -75,7 +88,8 @@ class WP_Widget_Login_Logout extends WP_Widget {
 		$title = strip_tags($instance['title']);
 		$register_link = $instance['register_link'] ? 'checked="checked"' : '';
 		$admin_link = $instance['admin_link'] ? 'checked="checked"' : '';
-		$redirect_to = strip_tags($instance['redirect_to']);
+		$login_redirect_to = strip_tags($instance['login_redirect_to']);
+		$logout_redirect_to = strip_tags($instance['logout_redirect_to']);
 		
 ?>
 			<p>
@@ -88,7 +102,10 @@ class WP_Widget_Login_Logout extends WP_Widget {
 				<input class="checkbox" type="checkbox" <?php echo $admin_link; ?> id="<?php echo $this->get_field_id('admin_link'); ?>" name="<?php echo $this->get_field_name('admin_link'); ?>" /> <label for="<?php echo $this->get_field_id('admin_link'); ?>"><?php _e('Show admin link (if user is logged in)'); ?>;</label>
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id('redirect_to'); ?>"><?php _e('Redirect to this page after login or logout:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('redirect_to'); ?>" name="<?php echo $this->get_field_name('redirect_to'); ?>" type="text" value="<?php echo esc_attr($redirect_to); ?>" />
+				<label for="<?php echo $this->get_field_id('login_redirect_to'); ?>"><?php _e('Redirect to this page after login:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('login_redirect_to'); ?>" name="<?php echo $this->get_field_name('login_redirect_to'); ?>" type="text" value="<?php echo esc_attr($login_redirect_to); ?>" />
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id('logout_redirect_to'); ?>"><?php _e('Redirect to this page after logout:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('logout_redirect_to'); ?>" name="<?php echo $this->get_field_name('logout_redirect_to'); ?>" type="text" value="<?php echo esc_attr($logout_redirect_to); ?>" />
 			</p>
 			
 <?php
