@@ -29,7 +29,7 @@ Stable tag: 1.7.0
 
 1. Login-Logout widget
 2. Widget output when user is not logged in
-2. Widget output when user is logged in
+3. Widget output when user is logged in
 
 == Changelog ==
 
