@@ -5,7 +5,7 @@ Tags: login, logout, widget, meta
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
 Tested up to: 3.2
-Stable tag: 1.6.0
+Stable tag: 1.7.0
 
 "Login Logout" plugin add widget with login or logout link.
 
@@ -25,7 +25,16 @@ Stable tag: 1.6.0
 
 [WordPress stuff](http://web-profile.com.ua/wordpress/)
 
+== Screenshots ==
+
+1. Login-Logout widget
+2. Widget output when user is not logged in
+2. Widget output when user is logged in
+
 == Changelog ==
+
+= 1.7.0 =
+* Added "login text", "logout text", "register text" and "site admin text" options;
 
 = 1.6.0 =
 * Splitting "redirect to" option into "redirect to after login" and "redirect to after logout";
