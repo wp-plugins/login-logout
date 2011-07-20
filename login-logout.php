@@ -16,20 +16,20 @@ Future features:
 class WP_Widget_Login_Logout extends WP_Widget {
 
 	function WP_Widget_Login_Logout() {
-		$widget_ops = array('classname' => 'widget_login_logout', 'description' => __( 'Login-logout widget' ) );
-		$this->WP_Widget('login_logout', __('Login-logout'), $widget_ops);
+		$widget_ops = array('classname' => 'widget_login_logout', 'description' => __( 'Login-logout widget', 'login-logout' ) );
+		$this->WP_Widget('login_logout', __('Login-logout', 'login-logout'), $widget_ops);
 	}
 	
 	function widget( $args, $instance ) {
 		extract($args);
-		//$title = apply_filters('widget_title', empty($instance['title']) ? __('Login-logout') : $instance['title'], $instance, $this->id_base);
+		//$title = apply_filters('widget_title', empty($instance['title']) ? __('Login-logout', 'login-logout') : $instance['title'], $instance, $this->id_base);
 		$title = apply_filters('widget_title', $instance['title']);
-		$login_text = empty($instance['login_text']) ? __('Log in') : $instance['login_text'];
-		$logout_text = empty($instance['logout_text']) ? __('Log out') : $instance['logout_text'];
+		$login_text = empty($instance['login_text']) ? __('Log in', 'login-logout') : $instance['login_text'];
+		$logout_text = empty($instance['logout_text']) ? __('Log out', 'login-logout') : $instance['logout_text'];
 		$register_link = $instance['register_link'] ? '1' : '0';
-		$register_text = empty($instance['register_text']) ? __('Register') : $instance['register_text'];
+		$register_text = empty($instance['register_text']) ? __('Register', 'login-logout') : $instance['register_text'];
 		$admin_link = $instance['admin_link'] ? '1' : '0';
-		$admin_text = empty($instance['admin_text']) ? __('Site Admin') : $instance['admin_text'];
+		$admin_text = empty($instance['admin_text']) ? __('Site Admin', 'login-logout') : $instance['admin_text'];
 		$login_redirect_to = $instance['login_redirect_to'];
 		$logout_redirect_to = $instance['logout_redirect_to'];
 		
@@ -105,31 +105,31 @@ class WP_Widget_Login_Logout extends WP_Widget {
 		
 ?>
 			<p>
-				<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
+				<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title', 'login-logout'); ?>:</label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id('login_text'); ?>"><?php _e('Login text:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('login_text'); ?>" name="<?php echo $this->get_field_name('login_text'); ?>" type="text" value="<?php echo esc_attr($login_text); ?>" />
+				<label for="<?php echo $this->get_field_id('login_text'); ?>"><?php _e('Login text', 'login-logout'); ?>:</label> <input class="widefat" id="<?php echo $this->get_field_id('login_text'); ?>" name="<?php echo $this->get_field_name('login_text'); ?>" type="text" value="<?php echo esc_attr($login_text); ?>" />
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id('logout_text'); ?>"><?php _e('Logout text:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('logout_text'); ?>" name="<?php echo $this->get_field_name('logout_text'); ?>" type="text" value="<?php echo esc_attr($logout_text); ?>" />
+				<label for="<?php echo $this->get_field_id('logout_text'); ?>"><?php _e('Logout text', 'login-logout'); ?>:</label> <input class="widefat" id="<?php echo $this->get_field_id('logout_text'); ?>" name="<?php echo $this->get_field_name('logout_text'); ?>" type="text" value="<?php echo esc_attr($logout_text); ?>" />
 			</p>
 			<p>
-				<input class="checkbox" type="checkbox" <?php echo $register_link; ?> id="<?php echo $this->get_field_id('register_link'); ?>" name="<?php echo $this->get_field_name('register_link'); ?>" /> <label for="<?php echo $this->get_field_id('register_link'); ?>"><?php _e('Show register link (if user is logged out and if users can register)'); ?>;</label>
+				<input class="checkbox" type="checkbox" <?php echo $register_link; ?> id="<?php echo $this->get_field_id('register_link'); ?>" name="<?php echo $this->get_field_name('register_link'); ?>" /> <label for="<?php echo $this->get_field_id('register_link'); ?>"><?php _e('Show register link (if user is logged out and if users can register)', 'login-logout'); ?>;</label>
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id('register_text'); ?>"><?php _e('Register text:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('register_text'); ?>" name="<?php echo $this->get_field_name('register_text'); ?>" type="text" value="<?php echo esc_attr($register_text); ?>" />
+				<label for="<?php echo $this->get_field_id('register_text'); ?>"><?php _e('Register text', 'login-logout'); ?>:</label> <input class="widefat" id="<?php echo $this->get_field_id('register_text'); ?>" name="<?php echo $this->get_field_name('register_text'); ?>" type="text" value="<?php echo esc_attr($register_text); ?>" />
 			</p>
 			<p>
-				<input class="checkbox" type="checkbox" <?php echo $admin_link; ?> id="<?php echo $this->get_field_id('admin_link'); ?>" name="<?php echo $this->get_field_name('admin_link'); ?>" /> <label for="<?php echo $this->get_field_id('admin_link'); ?>"><?php _e('Show admin link (if user is logged in)'); ?>;</label>
+				<input class="checkbox" type="checkbox" <?php echo $admin_link; ?> id="<?php echo $this->get_field_id('admin_link'); ?>" name="<?php echo $this->get_field_name('admin_link'); ?>" /> <label for="<?php echo $this->get_field_id('admin_link'); ?>"><?php _e('Show admin link (if user is logged in)', 'login-logout'); ?>;</label>
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id('admin_text'); ?>"><?php _e('Admin text:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('admin_text'); ?>" name="<?php echo $this->get_field_name('admin_text'); ?>" type="text" value="<?php echo esc_attr($admin_text); ?>" />
+				<label for="<?php echo $this->get_field_id('admin_text'); ?>"><?php _e('Admin text', 'login-logout'); ?>:</label> <input class="widefat" id="<?php echo $this->get_field_id('admin_text'); ?>" name="<?php echo $this->get_field_name('admin_text'); ?>" type="text" value="<?php echo esc_attr($admin_text); ?>" />
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id('login_redirect_to'); ?>"><?php _e('Redirect to this page after login:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('login_redirect_to'); ?>" name="<?php echo $this->get_field_name('login_redirect_to'); ?>" type="text" value="<?php echo esc_attr($login_redirect_to); ?>" />
+				<label for="<?php echo $this->get_field_id('login_redirect_to'); ?>"><?php _e('Redirect to this page after login', 'login-logout'); ?>:</label> <input class="widefat" id="<?php echo $this->get_field_id('login_redirect_to'); ?>" name="<?php echo $this->get_field_name('login_redirect_to'); ?>" type="text" value="<?php echo esc_attr($login_redirect_to); ?>" />
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id('logout_redirect_to'); ?>"><?php _e('Redirect to this page after logout:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('logout_redirect_to'); ?>" name="<?php echo $this->get_field_name('logout_redirect_to'); ?>" type="text" value="<?php echo esc_attr($logout_redirect_to); ?>" />
+				<label for="<?php echo $this->get_field_id('logout_redirect_to'); ?>"><?php _e('Redirect to this page after logout', 'login-logout'); ?>:</label> <input class="widefat" id="<?php echo $this->get_field_id('logout_redirect_to'); ?>" name="<?php echo $this->get_field_name('logout_redirect_to'); ?>" type="text" value="<?php echo esc_attr($logout_redirect_to); ?>" />
 			</p>
 			
 <?php
@@ -145,3 +145,9 @@ add_action('init', 'login_logout_widget_init', 1);*/
 
 
 add_action('widgets_init', create_function('', 'return register_widget("WP_Widget_Login_Logout");'));
+
+// i18n
+function login_logout_plugin_init() {
+	load_plugin_textdomain('login-logout', false, dirname( plugin_basename(__FILE__) ) . '/lang');
+}
+add_action('init', 'login_logout_plugin_init');
