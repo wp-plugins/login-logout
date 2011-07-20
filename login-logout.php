@@ -3,14 +3,13 @@
 Plugin Name: Login Logout
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/login-logout/
 Description: Show login or logout link. Show register or site-admin link.
-Version: 1.7.0
+Version: 1.8.0
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/
 
 Future features:
 - http-s;
-- add translation;
 */
 
 class WP_Widget_Login_Logout extends WP_Widget {
@@ -142,7 +141,6 @@ class WP_Widget_Login_Logout extends WP_Widget {
 	do_action('widgets_init');
 }
 add_action('init', 'login_logout_widget_init', 1);*/
-
 
 add_action('widgets_init', create_function('', 'return register_widget("WP_Widget_Login_Logout");'));
 
