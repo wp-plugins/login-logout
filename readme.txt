@@ -5,7 +5,7 @@ Tags: login, logout, widget, meta
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
 Tested up to: 3.2.1
-Stable tag: 1.8.0
+Stable tag: 2.0.0
 
 "Login Logout" plugin add widget with login or logout link.
 
@@ -13,17 +13,18 @@ Stable tag: 1.8.0
 
 "Login Logout" plugin add widget with login or logout link. Also can be shown register and admin link.
 
-= If user is not logged in there are two links: =
+= If user is not logged in there are next links: =
 * login (after login action user will return to previous page);
 * register (if user can register) (if checkbox is active);
 
-= If user is logged in there are two links: =
+= If user is logged in there are next links: =
+* welcome text with link to user profile (if checkbox is active);
 * logout (after logout action user will return to previous page);
 * site admin (if checkbox is active);
 
 [Login-Logout plugin page](http://web-profile.com.ua/wordpress/plugins/login-logout/)
 
-[WordPress stuff](http://web-profile.com.ua/wordpress/)
+[CMS WordPress](http://web-profile.com.ua/wordpress/)
 
 == Screenshots ==
 
@@ -32,6 +33,10 @@ Stable tag: 1.8.0
 3. Widget output when user is logged in
 
 == Changelog ==
+
+= 2.0.0 =
+* Added inline option;
+* Added welcome text;
 
 = 1.8.0 =
 * Translation ready;
