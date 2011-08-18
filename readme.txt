@@ -28,9 +28,9 @@ Stable tag: 2.0.0
 
 == Screenshots ==
 
-1. Login-Logout widget
-2. Widget output when user is not logged in
-3. Widget output when user is logged in
+1. Login-Logout widget;
+2. Widget output when user is not logged in;
+3. Widget output when user is logged in;
 
 == Changelog ==
 

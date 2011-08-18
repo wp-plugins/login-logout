@@ -9,7 +9,7 @@ Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/
 
 Future features:
-- http-s;
+- http-s in redirect link;
 */
 
 class WP_Widget_Login_Logout extends WP_Widget {
