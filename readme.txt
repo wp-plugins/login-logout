@@ -5,7 +5,7 @@ Tags: login, logout, widget, meta
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
 Tested up to: 3.3
-Stable tag: 2.1
+Stable tag: 2.2
 
 "Login Logout" plugin add widget with login or logout link.
 
@@ -34,6 +34,9 @@ Stable tag: 2.1
 4. Widget output when user is logged in and inline option is on;
 
 == Changelog ==
+
+= 2.2 =
+* Added extra item for the list of items;
 
 = 2.1 =
 * Added html tags support in many fields;

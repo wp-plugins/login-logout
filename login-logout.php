@@ -3,7 +3,7 @@
 Plugin Name: Login Logout
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/login-logout/
 Description: Show login or logout link. Show register or site-admin link.
-Version: 2.1
+Version: 2.2
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/
@@ -34,6 +34,8 @@ class WP_Widget_Login_Logout extends WP_Widget {
 		$login_redirect_to = $instance['login_redirect_to'];
 		$logout_redirect_to = $instance['logout_redirect_to'];
 		$inline = $instance['inline'] ? '1' : '0';
+		$login_extra = $instance['login_extra'];
+		$logout_extra = $instance['logout_extra'];
 		
 		echo $before_widget;
 		if ( $title ){
@@ -83,18 +85,29 @@ class WP_Widget_Login_Logout extends WP_Widget {
 		}
 		echo $item_after;
 		//wp_register();
-		if( $register_link ){
+		if( $register_link ){ // register link
 			if ( ! is_user_logged_in() ) {
 				if ( get_option('users_can_register') ){
 					echo $split_char.$item_before.'"item_register">'.'<a href="'.site_url('wp-login.php?action=register', 'login').'">'.$register_text.'</a>'.$item_after;
 				}
 			}
 		}
-		if( $admin_link ){
+		if( $admin_link ){ // admin link
 			if ( is_user_logged_in() ) {
 				echo $split_char.$item_before.'"item_admin">'.'<a href="'.admin_url().'">'.$admin_text.'</a>'.$item_after;
 			}
 		}
+		
+		if ( is_user_logged_in() ) { // show extra item
+			if( $login_extra ){
+				echo $split_char.$item_before.'"item_extra_login">'.$login_extra.$item_after;
+			}
+		}else{
+			if( $logout_extra ){
+				echo $split_char.$item_before.'"item_extra_logout">'.$logout_extra.$item_after;
+			}
+		}
+		
 		echo "\n".$wrap_after."\n";
 		
 		echo $after_widget;
@@ -125,6 +138,8 @@ class WP_Widget_Login_Logout extends WP_Widget {
 		$instance['login_redirect_to'] = strip_tags($new_instance['login_redirect_to']);
 		$instance['logout_redirect_to'] = strip_tags($new_instance['logout_redirect_to']);
 		$instance['inline'] = $new_instance['inline'] ? 1 : 0;
+		$instance['login_extra'] = trim($new_instance['login_extra']);
+		$instance['logout_extra'] = trim($new_instance['logout_extra']);
 		return $instance;
 	}
 
@@ -152,6 +167,8 @@ class WP_Widget_Login_Logout extends WP_Widget {
 		$login_redirect_to = strip_tags($instance['login_redirect_to']);
 		$logout_redirect_to = strip_tags($instance['logout_redirect_to']);
 		$inline = $instance['inline'] ? 'checked="checked"' : '';
+		$login_extra = trim($instance['login_extra']);
+		$logout_extra = trim($instance['logout_extra']);
 		
 ?>
 			<p>
@@ -190,7 +207,14 @@ class WP_Widget_Login_Logout extends WP_Widget {
 			<p>
 				<input class="checkbox" type="checkbox" <?php echo $inline; ?> id="<?php echo $this->get_field_id('inline'); ?>" name="<?php echo $this->get_field_name('inline'); ?>" /> <label for="<?php echo $this->get_field_id('inline'); ?>"><?php _e('Inline (list or line of links)', 'login-logout'); ?>;</label>
 			</p>
-			
+			<p>
+				<label for="<?php echo $this->get_field_id('login_extra'); ?>"><?php _e('Extra item when user is logged in', 'login-logout'); ?>:</label>
+				<textarea class="widefat" rows="16" cols="10" id="<?php echo $this->get_field_id('login_extra'); ?>" name="<?php echo $this->get_field_name('login_extra'); ?>"><?php echo esc_attr($login_extra); ?></textarea>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id('logout_extra'); ?>"><?php _e('Extra item when user is logged out', 'login-logout'); ?>:</label>
+				<textarea class="widefat" rows="16" cols="10" id="<?php echo $this->get_field_id('logout_extra'); ?>" name="<?php echo $this->get_field_name('logout_extra'); ?>"><?php echo esc_attr($logout_extra); ?></textarea>
+			</p>
 <?php
 	}
 }
