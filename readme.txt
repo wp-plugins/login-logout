@@ -13,11 +13,11 @@ Stable tag: 2.1
 
 "Login Logout" plugin add widget with login or logout link. Also can be shown register and admin link.
 
-= If user is not logged in there are next links: =
+= If user is not logged in there are such links: =
 * login (after login action user will return to previous page);
 * register (if user can register) (if checkbox is active);
 
-= If user is logged in there are next links: =
+= If user is logged in there are such links: =
 * welcome text with link to user profile (if checkbox is active);
 * logout (after logout action user will return to previous page);
 * site admin (if checkbox is active);
