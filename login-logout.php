@@ -3,7 +3,7 @@
 Plugin Name: Login Logout
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/login-logout/
 Description: Show login or logout link. Show register or site-admin link.
-Version: 2.0.1
+Version: 2.1
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/
@@ -51,17 +51,17 @@ class WP_Widget_Login_Logout extends WP_Widget {
 		if( $inline ){
 			$wrap_before = '<p class="wrap_login_logout">';
 			$wrap_after = '</p>';
-			$item_before = '<span>';
+			$item_before = '<span class='; // class will be added and the tag is not closed
 			$item_after = '</span>';
 			$split_char = ' | ';
 		}else{
 			$wrap_before = '<ul class="wrap_login_logout">';
 			$wrap_after = '</ul>';
-			$item_before = '<li>';
+			$item_before = '<li class='; // class will be added and the tag is not closed
 			$item_after = '</li>';
 			$split_char = '';
 		}
-		echo "\n".'<!-- powered by Login-Logout plugin ver. 2.0.1 -->'."\n";
+		echo "\n".'<!-- powered by Login-Logout plugin ver. 2.1 -->'."\n";
 		echo $wrap_before."\n";
 		if ( $show_welcome_text ){
 			if ( is_user_logged_in() ){
@@ -69,14 +69,16 @@ class WP_Widget_Login_Logout extends WP_Widget {
 				$username = $current_user->display_name;
 				$username_link = '<a href="'.admin_url('profile.php').'">'.$username.'</a>';
 				$welcome_text_new = str_replace('[username]', $username_link, $welcome_text);
-				echo $item_before.$welcome_text_new.$item_after.$split_char;
+				echo $item_before.'"item_welcome">'.$welcome_text_new.$item_after.$split_char;
 			}
 		}
 		echo $item_before;
 		//wp_loginout( $redirect_to_self );
 		if ( ! is_user_logged_in() ){
+			echo '"item_login">';
 			echo '<a href="'.esc_url( wp_login_url( $login_redirect_to ) ).'">'.$login_text.'</a>';
 		}else{
+			echo '"item_logout">';
 			echo '<a href="'.esc_url( wp_logout_url( $logout_redirect_to ) ).'">'.$logout_text.'</a>';
 		}
 		echo $item_after;
@@ -84,13 +86,13 @@ class WP_Widget_Login_Logout extends WP_Widget {
 		if( $register_link ){
 			if ( ! is_user_logged_in() ) {
 				if ( get_option('users_can_register') ){
-					echo $split_char.$item_before.'<a href="'.site_url('wp-login.php?action=register', 'login').'">'.$register_text.'</a>'.$item_after;
+					echo $split_char.$item_before.'"item_register">'.'<a href="'.site_url('wp-login.php?action=register', 'login').'">'.$register_text.'</a>'.$item_after;
 				}
 			}
 		}
 		if( $admin_link ){
 			if ( is_user_logged_in() ) {
-				echo $split_char.$item_before.'<a href="'.admin_url().'">'.$admin_text.'</a>'.$item_after;
+				echo $split_char.$item_before.'"item_admin">'.'<a href="'.admin_url().'">'.$admin_text.'</a>'.$item_after;
 			}
 		}
 		echo "\n".$wrap_after."\n";
@@ -112,14 +114,14 @@ class WP_Widget_Login_Logout extends WP_Widget {
 			)
 		);
 		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['login_text'] = strip_tags($new_instance['login_text']);
-		$instance['logout_text'] = strip_tags($new_instance['logout_text']);
+		$instance['login_text'] = trim($new_instance['login_text']);
+		$instance['logout_text'] = trim($new_instance['logout_text']);
 		$instance['show_welcome_text'] = $new_instance['show_welcome_text'] ? 1 : 0;
-		$instance['welcome_text'] = strip_tags($new_instance['welcome_text']);
+		$instance['welcome_text'] = trim($new_instance['welcome_text']);
 		$instance['register_link'] = $new_instance['register_link'] ? 1 : 0;
-		$instance['register_text'] = strip_tags($new_instance['register_text']);
+		$instance['register_text'] = trim($new_instance['register_text']);
 		$instance['admin_link'] = $new_instance['admin_link'] ? 1 : 0;
-		$instance['admin_text'] = strip_tags($new_instance['admin_text']);
+		$instance['admin_text'] = trim($new_instance['admin_text']);
 		$instance['login_redirect_to'] = strip_tags($new_instance['login_redirect_to']);
 		$instance['logout_redirect_to'] = strip_tags($new_instance['logout_redirect_to']);
 		$instance['inline'] = $new_instance['inline'] ? 1 : 0;
@@ -139,14 +141,14 @@ class WP_Widget_Login_Logout extends WP_Widget {
 			)
 		);
 		$title = strip_tags($instance['title']);
-		$login_text = strip_tags($instance['login_text']);
-		$logout_text = strip_tags($instance['logout_text']);
+		$login_text = trim($instance['login_text']);
+		$logout_text = trim($instance['logout_text']);
 		$show_welcome_text = $instance['show_welcome_text'] ? 'checked="checked"' : '';
-		$welcome_text = strip_tags($instance['welcome_text']);
+		$welcome_text = trim($instance['welcome_text']);
 		$register_link = $instance['register_link'] ? 'checked="checked"' : '';
-		$register_text = strip_tags($instance['register_text']);
+		$register_text = trim($instance['register_text']);
 		$admin_link = $instance['admin_link'] ? 'checked="checked"' : '';
-		$admin_text = strip_tags($instance['admin_text']);
+		$admin_text = trim($instance['admin_text']);
 		$login_redirect_to = strip_tags($instance['login_redirect_to']);
 		$logout_redirect_to = strip_tags($instance['logout_redirect_to']);
 		$inline = $instance['inline'] ? 'checked="checked"' : '';
