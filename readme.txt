@@ -11,7 +11,7 @@ Stable tag: 2.3
 
 == Description ==
 
-"Login Logout" plugin add widget with login or logout link. Also can be shown register and admin link.
+"Login Logout" plugin add widget with login or logout link. Also can be shown register or site-admin link. It is the replacement of the default Meta widget.
 
 = If user is not logged in there are such links: =
 * login (after login action user will return to previous page);
