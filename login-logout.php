@@ -2,7 +2,7 @@
 /*
 Plugin Name: Login Logout
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/login-logout/
-Description: Show login or logout link. Show register or site-admin link.
+Description: Show login or logout link. Show register or site-admin link. It is the replacement of the default Meta widget.
 Version: 2.3
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
