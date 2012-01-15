@@ -4,7 +4,7 @@ Plugin URI: http://web-profile.com.ua/wordpress/plugins/login-logout/
 Tags: login, logout, widget, meta
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
-Tested up to: 3.3
+Tested up to: 3.3.1
 Stable tag: 2.3
 
 "Login Logout" plugin add widget with login or logout link.
@@ -81,5 +81,5 @@ Stable tag: 2.3
 
 == Installation ==
 
-1. Install plugin and activate it on the Plugins page;
+1. Install and activate the plugin on the Plugins page;
 2. Add "Login Logout" widget to your sidebar and customize it;
