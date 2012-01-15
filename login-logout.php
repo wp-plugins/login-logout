@@ -63,7 +63,7 @@ class WP_Widget_Login_Logout extends WP_Widget {
 			$item_after = '</li>';
 			$split_char = '';
 		}
-		echo "\n".'<!-- powered by Login-Logout plugin ver. 2.3 (wordpress.org/extend/plugins/login-logout/) -->'."\n";
+		echo "\n".'<!-- Login-Logout plugin v.2.3 (wordpress.org/extend/plugins/login-logout/) -->'."\n";
 		echo $wrap_before."\n";
 		if ( $show_welcome_text ){
 			if ( is_user_logged_in() ){
