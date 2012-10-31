@@ -1,12 +1,12 @@
 <?php
 /*
 Plugin Name: Login Logout
-Plugin URI: http://web-profile.com.ua/wordpress/plugins/login-logout/
+Plugin URI: http://wordpress.org/extend/plugins/login-logout/
 Description: Show login or logout link. Show register or site-admin link. It is the replacement of the default Meta widget.
-Version: 2.3
+Version: 2.4
 Author: webvitaly
-Author Email: webvitaly(at)gmail.com
-Author URI: http://web-profile.com.ua/wordpress/
+Author URI: http://profiles.wordpress.org/webvitaly/
+License: GPLv2 or later
 
 Future features:
 - http-s in redirect link;
@@ -63,7 +63,7 @@ class WP_Widget_Login_Logout extends WP_Widget {
 			$item_after = '</li>';
 			$split_char = '';
 		}
-		echo "\n".'<!-- Login-Logout plugin v.2.3 (wordpress.org/extend/plugins/login-logout/) -->'."\n";
+		echo "\n".'<!-- Login-Logout plugin v.2.4 wordpress.org/extend/plugins/login-logout/ -->'."\n";
 		echo $wrap_before."\n";
 		if ( $show_welcome_text ){
 			if ( is_user_logged_in() ){
@@ -228,7 +228,17 @@ add_action('init', 'login_logout_widget_init', 1);*/
 add_action('widgets_init', create_function('', 'return register_widget("WP_Widget_Login_Logout");'));
 
 // i18n
-function login_logout_plugin_init() {
+function login_logout_plugin_unqprfx_init() {
 	load_plugin_textdomain('login-logout', false, dirname( plugin_basename(__FILE__) ) . '/lang');
 }
-add_action('init', 'login_logout_plugin_init');
+add_action('init', 'login_logout_plugin_unqprfx_init');
+
+
+function login_logout_unqprfx_plugin_meta( $links, $file ) { // add 'Support' and 'Donate' links to plugin meta row
+	if ( strpos( $file, 'login-logout.php' ) !== false ) {
+		$links = array_merge( $links, array( '<a href="http://web-profile.com.ua/wordpress/plugins/login-logout/" title="Need help?">' . __('Support') . '</a>' ) );
+		$links = array_merge( $links, array( '<a href="http://web-profile.com.ua/donate/" title="Support the development">' . __('Donate') . '</a>' ) );
+	}
+	return $links;
+}
+add_filter( 'plugin_row_meta', 'login_logout_unqprfx_plugin_meta', 10, 2 );

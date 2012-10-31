@@ -1,13 +1,15 @@
 === Login Logout ===
 Contributors: webvitaly
-Plugin URI: http://web-profile.com.ua/wordpress/plugins/login-logout/
-Tags: login, logout, widget, meta
+Donate link: http://web-profile.com.ua/donate/
+Tags: login, log-in, logout, log-out, widget, meta, sidebar, admin, register
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
-Tested up to: 3.3.1
-Stable tag: 2.3
+Tested up to: 3.5
+Stable tag: 2.4
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Replacement of the default Meta widget with login or logout link
+Replacement of the default Meta widget
 
 == Description ==
 
@@ -22,13 +24,13 @@ Replacement of the default Meta widget with login or logout link
 * logout (after logout action user will return to previous page);
 * site admin (if checkbox is active);
 
-[Login-Logout plugin page](http://web-profile.com.ua/wordpress/plugins/login-logout/)
+**[Login-Logout support page](http://web-profile.com.ua/wordpress/plugins/login-logout/)**
 
-= Try other useful plugins: =
-* [Page-list](http://wordpress.org/extend/plugins/page-list/) - show list of pages with shortcodes
-* [Iframe](http://wordpress.org/extend/plugins/iframe/) - embed iframe with shortcode
-* [Login Logout](http://wordpress.org/extend/plugins/login-logout/) - default Meta widget replacement
-* [Filenames to latin](http://wordpress.org/extend/plugins/filenames-to-latin/) - sanitize filenames to latin during upload
+= Useful plugins: =
+* ["Page-list" - show list of pages with shortcodes](http://wordpress.org/extend/plugins/page-list/ "list of pages with shortcodes")
+* ["Iframe" - embed iframe with shortcode](http://wordpress.org/extend/plugins/iframe/ "embed iframe")
+* ["Anti-spam" - block spam in comments](http://wordpress.org/extend/plugins/anti-spam/ "no spam, no captcha")
+* ["Filenames to latin" - sanitize filenames to latin during upload](http://wordpress.org/extend/plugins/filenames-to-latin/ "sanitize filenames to latin")
 
 == Screenshots ==
 
@@ -38,6 +40,9 @@ Replacement of the default Meta widget with login or logout link
 4. Widget output when user is logged in and inline option is on
 
 == Changelog ==
+
+= 2.4 - 2012-10-31 =
+* minor changes
 
 = 2.3 =
 * Fixing minor bugs
