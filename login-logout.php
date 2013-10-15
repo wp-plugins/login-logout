@@ -1,27 +1,24 @@
 <?php
 /*
 Plugin Name: Login Logout
-Plugin URI: http://wordpress.org/extend/plugins/login-logout/
+Plugin URI: http://wordpress.org/plugins/login-logout/
 Description: Show login or logout link. Show register or site-admin link. It is the replacement of the default Meta widget.
-Version: 2.4
+Version: 2.5
 Author: webvitaly
-Author URI: http://profiles.wordpress.org/webvitaly/
+Author URI: http://web-profile.com.ua/wordpress/plugins/
 License: GPLv2 or later
-
-Future features:
-- http-s in redirect link;
 */
 
 class WP_Widget_Login_Logout extends WP_Widget {
 
 	function WP_Widget_Login_Logout() { // widget actual processes
-		$widget_ops = array('classname' => 'widget_login_logout', 'description' => __( 'Login-logout widget', 'login-logout' ) );
-		$this->WP_Widget('login_logout', __('Login-logout', 'login-logout'), $widget_ops);
+		$widget_ops = array('classname' => 'widget_login_logout', 'description' => __( 'Login-Logout widget', 'login-logout' ) );
+		$this->WP_Widget('login_logout', __('Login-Logout', 'login-logout'), $widget_ops);
 	}
 	
 	function widget( $args, $instance ) { // outputs the content of the widget
 		extract($args);
-		//$title = apply_filters('widget_title', empty($instance['title']) ? __('Login-logout', 'login-logout') : $instance['title'], $instance, $this->id_base);
+		//$title = apply_filters('widget_title', empty($instance['title']) ? __('Login-Logout', 'login-logout') : $instance['title'], $instance, $this->id_base);
 		$title = apply_filters('widget_title', $instance['title']);
 		$login_text = empty($instance['login_text']) ? __('Log in', 'login-logout') : $instance['login_text'];
 		$logout_text = empty($instance['logout_text']) ? __('Log out', 'login-logout') : $instance['logout_text'];
@@ -30,7 +27,7 @@ class WP_Widget_Login_Logout extends WP_Widget {
 		$register_link = $instance['register_link'] ? '1' : '0';
 		$register_text = empty($instance['register_text']) ? __('Register', 'login-logout') : $instance['register_text'];
 		$admin_link = $instance['admin_link'] ? '1' : '0';
-		$admin_text = empty($instance['admin_text']) ? __('Site Admin', 'login-logout') : $instance['admin_text'];
+		$admin_text = empty($instance['admin_text']) ? __('Admin section', 'login-logout') : $instance['admin_text'];
 		$login_redirect_to = $instance['login_redirect_to'];
 		$logout_redirect_to = $instance['logout_redirect_to'];
 		$inline = $instance['inline'] ? '1' : '0';
@@ -63,7 +60,7 @@ class WP_Widget_Login_Logout extends WP_Widget {
 			$item_after = '</li>';
 			$split_char = '';
 		}
-		echo "\n".'<!-- Login-Logout plugin v.2.4 wordpress.org/extend/plugins/login-logout/ -->'."\n";
+		echo "\n".'<!-- Login-Logout plugin v.2.5 wordpress.org/plugins/login-logout/ -->'."\n";
 		echo $wrap_before."\n";
 		if ( $show_welcome_text ){
 			if ( is_user_logged_in() ){
@@ -172,48 +169,48 @@ class WP_Widget_Login_Logout extends WP_Widget {
 		
 ?>
 			<p>
-				<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title', 'login-logout'); ?>:</label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
+				<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title', 'login-logout'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id('login_text'); ?>"><?php _e('Login text', 'login-logout'); ?>:</label> <input class="widefat" id="<?php echo $this->get_field_id('login_text'); ?>" name="<?php echo $this->get_field_name('login_text'); ?>" type="text" value="<?php echo esc_attr($login_text); ?>" />
+				<label for="<?php echo $this->get_field_id('login_text'); ?>"><?php _e('Login text', 'login-logout'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('login_text'); ?>" name="<?php echo $this->get_field_name('login_text'); ?>" type="text" value="<?php echo esc_attr($login_text); ?>" />
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id('logout_text'); ?>"><?php _e('Logout text', 'login-logout'); ?>:</label> <input class="widefat" id="<?php echo $this->get_field_id('logout_text'); ?>" name="<?php echo $this->get_field_name('logout_text'); ?>" type="text" value="<?php echo esc_attr($logout_text); ?>" />
+				<label for="<?php echo $this->get_field_id('logout_text'); ?>"><?php _e('Logout text', 'login-logout'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('logout_text'); ?>" name="<?php echo $this->get_field_name('logout_text'); ?>" type="text" value="<?php echo esc_attr($logout_text); ?>" />
 			</p>
 			<p>
-				<input class="checkbox" type="checkbox" <?php echo $show_welcome_text; ?> id="<?php echo $this->get_field_id('show_welcome_text'); ?>" name="<?php echo $this->get_field_name('show_welcome_text'); ?>" /> <label for="<?php echo $this->get_field_id('show_welcome_text'); ?>"><?php _e('Show welcome text if user is logged in', 'login-logout'); ?>;</label>
+				<input class="checkbox" type="checkbox" <?php echo $show_welcome_text; ?> id="<?php echo $this->get_field_id('show_welcome_text'); ?>" name="<?php echo $this->get_field_name('show_welcome_text'); ?>" /> <label for="<?php echo $this->get_field_id('show_welcome_text'); ?>"><?php _e('Show welcome text if user is logged in', 'login-logout'); ?></label>
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id('welcome_text'); ?>"><?php _e('Welcome text (use [username] for showing the name of the logged user)', 'login-logout'); ?>:</label> <input class="widefat" id="<?php echo $this->get_field_id('welcome_text'); ?>" name="<?php echo $this->get_field_name('welcome_text'); ?>" type="text" value="<?php echo esc_attr($welcome_text); ?>" />
+				<label for="<?php echo $this->get_field_id('welcome_text'); ?>"><?php _e('Welcome text (use [username] for showing the name of the logged user)', 'login-logout'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('welcome_text'); ?>" name="<?php echo $this->get_field_name('welcome_text'); ?>" type="text" value="<?php echo esc_attr($welcome_text); ?>" />
 			</p>
 			<p>
-				<input class="checkbox" type="checkbox" <?php echo $register_link; ?> id="<?php echo $this->get_field_id('register_link'); ?>" name="<?php echo $this->get_field_name('register_link'); ?>" /> <label for="<?php echo $this->get_field_id('register_link'); ?>"><?php _e('Show register link (if user is logged out and if users can register)', 'login-logout'); ?>;</label>
+				<input class="checkbox" type="checkbox" <?php echo $register_link; ?> id="<?php echo $this->get_field_id('register_link'); ?>" name="<?php echo $this->get_field_name('register_link'); ?>" /> <label for="<?php echo $this->get_field_id('register_link'); ?>"><?php _e('Show register link (if user is logged out and if users can register)', 'login-logout'); ?></label>
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id('register_text'); ?>"><?php _e('Register text', 'login-logout'); ?>:</label> <input class="widefat" id="<?php echo $this->get_field_id('register_text'); ?>" name="<?php echo $this->get_field_name('register_text'); ?>" type="text" value="<?php echo esc_attr($register_text); ?>" />
+				<label for="<?php echo $this->get_field_id('register_text'); ?>"><?php _e('Register text', 'login-logout'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('register_text'); ?>" name="<?php echo $this->get_field_name('register_text'); ?>" type="text" value="<?php echo esc_attr($register_text); ?>" />
 			</p>
 			<p>
-				<input class="checkbox" type="checkbox" <?php echo $admin_link; ?> id="<?php echo $this->get_field_id('admin_link'); ?>" name="<?php echo $this->get_field_name('admin_link'); ?>" /> <label for="<?php echo $this->get_field_id('admin_link'); ?>"><?php _e('Show admin link (if user is logged in)', 'login-logout'); ?>;</label>
+				<input class="checkbox" type="checkbox" <?php echo $admin_link; ?> id="<?php echo $this->get_field_id('admin_link'); ?>" name="<?php echo $this->get_field_name('admin_link'); ?>" /> <label for="<?php echo $this->get_field_id('admin_link'); ?>"><?php _e('Show admin link (if user is logged in)', 'login-logout'); ?></label>
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id('admin_text'); ?>"><?php _e('Admin text', 'login-logout'); ?>:</label> <input class="widefat" id="<?php echo $this->get_field_id('admin_text'); ?>" name="<?php echo $this->get_field_name('admin_text'); ?>" type="text" value="<?php echo esc_attr($admin_text); ?>" />
+				<label for="<?php echo $this->get_field_id('admin_text'); ?>"><?php _e('Admin text', 'login-logout'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('admin_text'); ?>" name="<?php echo $this->get_field_name('admin_text'); ?>" type="text" value="<?php echo esc_attr($admin_text); ?>" />
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id('login_redirect_to'); ?>"><?php _e('Redirect to this page after login', 'login-logout'); ?>:</label> <input class="widefat" id="<?php echo $this->get_field_id('login_redirect_to'); ?>" name="<?php echo $this->get_field_name('login_redirect_to'); ?>" type="text" value="<?php echo esc_attr($login_redirect_to); ?>" />
+				<label for="<?php echo $this->get_field_id('login_redirect_to'); ?>"><?php _e('Redirect to this page after login', 'login-logout'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('login_redirect_to'); ?>" name="<?php echo $this->get_field_name('login_redirect_to'); ?>" type="text" value="<?php echo esc_attr($login_redirect_to); ?>" />
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id('logout_redirect_to'); ?>"><?php _e('Redirect to this page after logout', 'login-logout'); ?>:</label> <input class="widefat" id="<?php echo $this->get_field_id('logout_redirect_to'); ?>" name="<?php echo $this->get_field_name('logout_redirect_to'); ?>" type="text" value="<?php echo esc_attr($logout_redirect_to); ?>" />
+				<label for="<?php echo $this->get_field_id('logout_redirect_to'); ?>"><?php _e('Redirect to this page after logout', 'login-logout'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('logout_redirect_to'); ?>" name="<?php echo $this->get_field_name('logout_redirect_to'); ?>" type="text" value="<?php echo esc_attr($logout_redirect_to); ?>" />
 			</p>
 			<p>
-				<input class="checkbox" type="checkbox" <?php echo $inline; ?> id="<?php echo $this->get_field_id('inline'); ?>" name="<?php echo $this->get_field_name('inline'); ?>" /> <label for="<?php echo $this->get_field_id('inline'); ?>"><?php _e('Inline (list or line of links)', 'login-logout'); ?>;</label>
+				<input class="checkbox" type="checkbox" <?php echo $inline; ?> id="<?php echo $this->get_field_id('inline'); ?>" name="<?php echo $this->get_field_name('inline'); ?>" /> <label for="<?php echo $this->get_field_id('inline'); ?>"><?php _e('Inline (list or line of links)', 'login-logout'); ?></label>
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id('login_extra'); ?>"><?php _e('Extra item when user is logged in', 'login-logout'); ?>:</label>
-				<textarea class="widefat" rows="16" cols="10" id="<?php echo $this->get_field_id('login_extra'); ?>" name="<?php echo $this->get_field_name('login_extra'); ?>"><?php echo esc_attr($login_extra); ?></textarea>
+				<label for="<?php echo $this->get_field_id('login_extra'); ?>"><?php _e('Extra item when user is logged in', 'login-logout'); ?></label>
+				<textarea class="widefat" rows="10" cols="10" id="<?php echo $this->get_field_id('login_extra'); ?>" name="<?php echo $this->get_field_name('login_extra'); ?>"><?php echo esc_attr($login_extra); ?></textarea>
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id('logout_extra'); ?>"><?php _e('Extra item when user is logged out', 'login-logout'); ?>:</label>
-				<textarea class="widefat" rows="16" cols="10" id="<?php echo $this->get_field_id('logout_extra'); ?>" name="<?php echo $this->get_field_name('logout_extra'); ?>"><?php echo esc_attr($logout_extra); ?></textarea>
+				<label for="<?php echo $this->get_field_id('logout_extra'); ?>"><?php _e('Extra item when user is logged out', 'login-logout'); ?></label>
+				<textarea class="widefat" rows="10" cols="10" id="<?php echo $this->get_field_id('logout_extra'); ?>" name="<?php echo $this->get_field_name('logout_extra'); ?>"><?php echo esc_attr($logout_extra); ?></textarea>
 			</p>
 <?php
 	}
@@ -227,18 +224,22 @@ add_action('init', 'login_logout_widget_init', 1);*/
 
 add_action('widgets_init', create_function('', 'return register_widget("WP_Widget_Login_Logout");'));
 
-// i18n
-function login_logout_plugin_unqprfx_init() {
-	load_plugin_textdomain('login-logout', false, dirname( plugin_basename(__FILE__) ) . '/lang');
-}
-add_action('init', 'login_logout_plugin_unqprfx_init');
 
-
-function login_logout_unqprfx_plugin_meta( $links, $file ) { // add 'Support' and 'Donate' links to plugin meta row
-	if ( strpos( $file, 'login-logout.php' ) !== false ) {
-		$links = array_merge( $links, array( '<a href="http://web-profile.com.ua/wordpress/plugins/login-logout/" title="Need help?">' . __('Support') . '</a>' ) );
-		$links = array_merge( $links, array( '<a href="http://web-profile.com.ua/donate/" title="Support the development">' . __('Donate') . '</a>' ) );
+if ( ! function_exists( 'login_logout_plugin_unqprfx_init' ) ) :
+	function login_logout_plugin_unqprfx_init() { // i18n
+		load_plugin_textdomain('login-logout', false, dirname( plugin_basename(__FILE__) ) . '/languages/');
 	}
-	return $links;
-}
-add_filter( 'plugin_row_meta', 'login_logout_unqprfx_plugin_meta', 10, 2 );
+	add_action('init', 'login_logout_plugin_unqprfx_init');
+endif; // end of login_logout_plugin_unqprfx_init()
+
+
+if ( ! function_exists( 'login_logout_unqprfx_plugin_meta' ) ) :
+	function login_logout_unqprfx_plugin_meta( $links, $file ) { // add 'Plugin page' and 'Donate' links to plugin meta row
+		if ( strpos( $file, 'login-logout.php' ) !== false ) {
+			$links = array_merge( $links, array( '<a href="http://web-profile.com.ua/wordpress/plugins/login-logout/" title="Plugin page">' . __('Login-Logout', 'login-logout') . '</a>' ) );
+			$links = array_merge( $links, array( '<a href="http://web-profile.com.ua/donate/" title="Support the development">' . __('Donate', 'login-logout') . '</a>' ) );
+		}
+		return $links;
+	}
+	add_filter( 'plugin_row_meta', 'login_logout_unqprfx_plugin_meta', 10, 2 );
+endif; // end of login_logout_unqprfx_plugin_meta()
