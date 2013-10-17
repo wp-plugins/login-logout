@@ -3,7 +3,7 @@
 Plugin Name: Login Logout
 Plugin URI: http://wordpress.org/plugins/login-logout/
 Description: Show login or logout link. Show register or site-admin link. It is the replacement of the default Meta widget.
-Version: 2.5
+Version: 2.6
 Author: webvitaly
 Author URI: http://web-profile.com.ua/wordpress/plugins/
 License: GPLv2 or later
@@ -60,7 +60,7 @@ class WP_Widget_Login_Logout extends WP_Widget {
 			$item_after = '</li>';
 			$split_char = '';
 		}
-		echo "\n".'<!-- Login-Logout plugin v.2.5 wordpress.org/plugins/login-logout/ -->'."\n";
+		echo "\n".'<!-- Login-Logout plugin v.2.6 wordpress.org/plugins/login-logout/ -->'."\n";
 		echo $wrap_before."\n";
 		if ( $show_welcome_text ){
 			if ( is_user_logged_in() ){
