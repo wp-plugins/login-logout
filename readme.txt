@@ -4,8 +4,8 @@ Donate link: http://web-profile.com.ua/donate/
 Tags: login, log-in, logout, log-out, widget, meta, sidebar, admin, register
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
-Tested up to: 3.6.1
-Stable tag: 2.6
+Tested up to: 3.7.1
+Stable tag: 2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,9 @@ Widget with login, logout, admin and register links. Replacement of the default 
 4. Widget output when user is logged in and inline option is on
 
 == Changelog ==
+
+= 2.7 - 2013-11-07 =
+* added Spanish translation (thanks to Maria Ramos)
 
 = 2.6 - 2013-10-17 =
 * added Serbian translation (thanks to Borisa Djuraskovic)
