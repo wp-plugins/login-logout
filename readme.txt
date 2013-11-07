@@ -44,10 +44,10 @@ Widget with login, logout, admin and register links. Replacement of the default 
 == Changelog ==
 
 = 2.7 - 2013-11-07 =
-* added Spanish translation (thanks to Maria Ramos)
+* Spanish translation made by Maria Ramos from WebHostingHub
 
 = 2.6 - 2013-10-17 =
-* added Serbian translation (thanks to Borisa Djuraskovic)
+* Serbian translation made by Borisa Djuraskovic from WebHostingHub
 
 = 2.5 - 2013-10-15 =
 * minor changes
