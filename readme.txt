@@ -29,7 +29,7 @@ Widget with login, logout, admin and register links. Replacement of the default 
 
 = Useful plugins: =
 * ["Filenames to latin" - sanitize filenames to latin during upload](http://wordpress.org/plugins/filenames-to-latin/ "sanitize filenames to latin")
-* ["Easy to use" - unmask password field and enable 'remember me' by default](http://wordpress.org/plugins/page-list/ "unmask password and enable remember me")
+* ["Easy to use" - unmask password field and enable 'remember me' by default](http://wordpress.org/plugins/easy-to-use/ "unmask password and enable remember me")
 * ["activetab" - responsive clean theme](http://wordpress.org/themes/activetab "responsive clean theme")
 
 
