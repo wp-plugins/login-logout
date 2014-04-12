@@ -1,7 +1,7 @@
 === Login-Logout ===
 Contributors: webvitaly
 Donate link: http://web-profile.com.ua/donate/
-Tags: login, log-in, logout, log-out, widget, meta, sidebar, admin, register
+Tags: login, logout, widget, meta, sidebar, admin, register
 Requires at least: 3.0
 Tested up to: 3.9
 Stable tag: 2.7
