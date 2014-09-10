@@ -3,7 +3,7 @@ Contributors: webvitaly
 Donate link: http://web-profile.com.ua/donate/
 Tags: login, logout, widget, meta, sidebar, admin, register
 Requires at least: 3.0
-Tested up to: 3.9
+Tested up to: 4.0
 Stable tag: 2.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -12,6 +12,7 @@ Widget with login, logout, admin and register links. Replacement of the default 
 
 == Description ==
 
+[WordPress Pro plugins](http://codecanyon.net/popular_item/by_category?category=wordpress&ref=webvitaly) |
 [Login-Logout](http://web-profile.com.ua/wordpress/plugins/login-logout/ "Plugin page") |
 [Donate](http://web-profile.com.ua/donate/ "Support the development")
 
@@ -28,9 +29,9 @@ Widget with login, logout, admin and register links. Replacement of the default 
 
 
 = Useful plugins: =
-* ["Filenames to latin" - sanitize filenames to latin during upload](http://wordpress.org/plugins/filenames-to-latin/ "sanitize filenames to latin")
+* ["Anti-spam" - block spam in comments](http://wordpress.org/plugins/anti-spam/ "no spam, no captcha")
+* ["Anti-spam Pro"](http://codecanyon.net/item/antispam-pro/6491169?ref=webvitaly)
 * ["Easy to use" - unmask password field and enable 'remember me' by default](http://wordpress.org/plugins/easy-to-use/ "unmask password and enable remember me")
-* ["activetab" - responsive clean theme](http://wordpress.org/themes/activetab "responsive clean theme")
 
 
 == Screenshots ==
