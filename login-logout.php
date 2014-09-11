@@ -3,7 +3,7 @@
 Plugin Name: Login-Logout
 Plugin URI: http://wordpress.org/plugins/login-logout/
 Description: Show login or logout link. Show register or site-admin link. It is the replacement of the default Meta widget.
-Version: 2.7
+Version: 2.8
 Author: webvitaly
 Author URI: http://web-profile.com.ua/wordpress/plugins/
 License: GPLv3
@@ -60,7 +60,7 @@ class WP_Widget_Login_Logout extends WP_Widget {
 			$item_after = '</li>';
 			$split_char = '';
 		}
-		echo "\n".'<!-- Login-Logout plugin v.2.7 wordpress.org/plugins/login-logout/ -->'."\n";
+		echo "\n".'<!-- Login-Logout plugin v.2.8 wordpress.org/plugins/login-logout/ -->'."\n";
 		echo $wrap_before."\n";
 		if ( $show_welcome_text ){
 			if ( is_user_logged_in() ){
@@ -236,8 +236,8 @@ endif; // end of login_logout_plugin_unqprfx_init()
 if ( ! function_exists( 'login_logout_unqprfx_plugin_meta' ) ) :
 	function login_logout_unqprfx_plugin_meta( $links, $file ) { // add 'Plugin page' and 'Donate' links to plugin meta row
 		if ( strpos( $file, 'login-logout.php' ) !== false ) {
-			$links = array_merge( $links, array( '<a href="http://web-profile.com.ua/wordpress/plugins/login-logout/" title="Plugin page">' . __('Login-Logout', 'login-logout') . '</a>' ) );
-			$links = array_merge( $links, array( '<a href="http://web-profile.com.ua/donate/" title="Support the development">' . __('Donate', 'login-logout') . '</a>' ) );
+			$links = array_merge( $links, array( '<a href="http://web-profile.com.ua/wordpress/plugins/login-logout/" title="Plugin page">Login-Logout</a>' ) );
+			$links = array_merge( $links, array( '<a href="http://web-profile.com.ua/donate/" title="Support the development">Donate</a>' ) );
 		}
 		return $links;
 	}

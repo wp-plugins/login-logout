@@ -4,7 +4,7 @@ Donate link: http://web-profile.com.ua/donate/
 Tags: login, logout, widget, meta, sidebar, admin, register
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 2.7
+Stable tag: 2.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -42,6 +42,9 @@ Widget with login, logout, admin and register links. Replacement of the default 
 4. Widget output when user is logged in and inline option is on
 
 == Changelog ==
+
+= 2.8 - 2014-09-11 =
+* Czech translation made by Daniel Čermák - http://danielcermak.eu/
 
 = 2.7 - 2013-11-07 =
 * Spanish translation made by Maria Ramos from WebHostingHub
