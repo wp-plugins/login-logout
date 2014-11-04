@@ -3,7 +3,7 @@
 Plugin Name: Login-Logout
 Plugin URI: http://wordpress.org/plugins/login-logout/
 Description: Show login or logout link. Show register or site-admin link. It is the replacement of the default Meta widget.
-Version: 2.8
+Version: 2.9
 Author: webvitaly
 Author URI: http://web-profile.com.ua/wordpress/plugins/
 License: GPLv3
@@ -53,14 +53,14 @@ class WP_Widget_Login_Logout extends WP_Widget {
 			$item_before = '<span class='; // class will be added and the tag is not closed
 			$item_after = '</span>';
 			$split_char = ' | ';
-		}else{
+		} else {
 			$wrap_before = '<ul class="wrap_login_logout">';
 			$wrap_after = '</ul>';
 			$item_before = '<li class='; // class will be added and the tag is not closed
 			$item_after = '</li>';
 			$split_char = '';
 		}
-		echo "\n".'<!-- Login-Logout plugin v.2.8 wordpress.org/plugins/login-logout/ -->'."\n";
+		echo "\n".'<!-- Login-Logout plugin v.2.9 wordpress.org/plugins/login-logout/ -->'."\n";
 		echo $wrap_before."\n";
 		if ( $show_welcome_text ){
 			if ( is_user_logged_in() ){
@@ -76,7 +76,7 @@ class WP_Widget_Login_Logout extends WP_Widget {
 		if ( ! is_user_logged_in() ){
 			echo '"item_login">';
 			echo '<a href="'.esc_url( wp_login_url( $login_redirect_to ) ).'">'.$login_text.'</a>';
-		}else{
+		} else {
 			echo '"item_logout">';
 			echo '<a href="'.esc_url( wp_logout_url( $logout_redirect_to ) ).'">'.$logout_text.'</a>';
 		}
@@ -99,7 +99,7 @@ class WP_Widget_Login_Logout extends WP_Widget {
 			if( $login_extra ){
 				echo $split_char.$item_before.'"item_extra_login">'.$login_extra.$item_after;
 			}
-		}else{
+		} else {
 			if( $logout_extra ){
 				echo $split_char.$item_before.'"item_extra_logout">'.$logout_extra.$item_after;
 			}
