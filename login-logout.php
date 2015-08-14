@@ -3,7 +3,7 @@
 Plugin Name: Login-Logout
 Plugin URI: http://wordpress.org/plugins/login-logout/
 Description: Show login or logout link. Show register or site-admin link. It is the replacement of the default Meta widget.
-Version: 3.0
+Version: 3.1
 Author: webvitaly
 Author URI: http://web-profile.com.ua/wordpress/plugins/
 License: GPLv3
@@ -11,12 +11,12 @@ License: GPLv3
 
 class WP_Widget_Login_Logout extends WP_Widget {
 
-	function WP_Widget_Login_Logout() { // widget actual processes
+	public function __construct() { // widget actual processes
 		$widget_ops = array('classname' => 'widget_login_logout', 'description' => __( 'Login-Logout widget', 'login-logout' ) );
 		$this->WP_Widget('login_logout', __('Login-Logout', 'login-logout'), $widget_ops);
 	}
 	
-	function widget( $args, $instance ) { // outputs the content of the widget
+	public function widget( $args, $instance ) { // outputs the content of the widget
 		extract($args);
 		//$title = apply_filters('widget_title', empty($instance['title']) ? __('Login-Logout', 'login-logout') : $instance['title'], $instance, $this->id_base);
 		$title = apply_filters('widget_title', $instance['title']);
@@ -60,7 +60,7 @@ class WP_Widget_Login_Logout extends WP_Widget {
 			$item_after = '</li>';
 			$split_char = '';
 		}
-		echo "\n".'<!-- Login-Logout plugin v.2.9 wordpress.org/plugins/login-logout/ -->'."\n";
+		echo "\n".'<!-- Powered by Login-Logout plugin v.3.1 wordpress.org/plugins/login-logout/ -->'."\n";
 		echo $wrap_before."\n";
 		if ( $show_welcome_text ){
 			if ( is_user_logged_in() ){
@@ -110,7 +110,7 @@ class WP_Widget_Login_Logout extends WP_Widget {
 		echo $after_widget;
 	}
 
-	function update( $new_instance, $old_instance ) { // processes widget options to be saved
+	public function update( $new_instance, $old_instance ) { // processes widget options to be saved
 		$instance = $old_instance;
 		$new_instance = wp_parse_args( // default values
 			(array) $new_instance,
@@ -140,7 +140,7 @@ class WP_Widget_Login_Logout extends WP_Widget {
 		return $instance;
 	}
 
-	function form( $instance ) { // outputs the options form on admin
+	public function form( $instance ) { // outputs the options form on admin
 		$instance = wp_parse_args(
 			(array) $instance,
 			array(
